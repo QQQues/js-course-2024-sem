@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+        // Отримання поточної дати
+        const today = new Date();
+
+        // Визначення дня тижня
+        const dayOfWeek = today.getDay();
+
+        // Виведення результату
+        let message;
+        switch (dayOfWeek) {
+            case 0:
+                message = "Сьогодні неділя.";
+                break;
+            case 1:
+                message = "Сьогодні понеділок.";
+                break;
+            case 2:
+                message = "Сьогодні вівторок.";
+                break;
+            case 3:
+                message = "Сьогодні середа.";
+                break;
+            case 4:
+                message = "Сьогодні четвер.";
+                break;
+            case 5:
+                message = "Сьогодні п'ятниця.";
+                break;
+            case 6:
+                message = "Сьогодні субота.";
+                break;
+            default:
+                message = "Невідомий день.";
+        }
+
+        alert(message);
+    </script>
+</body>
+</html>

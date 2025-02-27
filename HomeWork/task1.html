@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камінь, ножиці, папір</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            const choices = ['камінь', 'ножиці', 'папір'];
+            const randomIndex = Math.floor(Math.random() * choices.length);
+            return choices[randomIndex];
+        }
+
+        function determineWinner(userChoice, computerChoice) {
+            if (userChoice === computerChoice) {
+                return 'Нічия!';
+            }
+            if (
+                (userChoice === 'камінь' && computerChoice === 'ножиці') ||
+                (userChoice === 'ножиці' && computerChoice === 'папір') ||
+                (userChoice === 'папір' && computerChoice === 'камінь')
+            ) {
+                return 'Ви виграли!';
+            } else {
+                return 'Ви програли!';
+            }
+        }
+
+        let userScore = 0;
+        let computerScore = 0;
+
+        while (true) {
+            const userChoice = prompt('Введіть ваш вибір (камінь, ножиці, папір) або "вихід" для завершення гри:').toLowerCase();
+            if (userChoice === 'вихід') {
+                alert(`Гра завершена. Рахунок: Ви - ${userScore}, Комп'ютер - ${computerScore}`);
+                break;
+            }
+            if (!['камінь', 'ножиці', 'папір'].includes(userChoice)) {
+                alert('Невірний вибір, спробуйте ще раз.');
+                continue;
+            }
+
+            const computerChoice = getComputerChoice();
+            const result = determineWinner(userChoice, computerChoice);
+
+            if (result === 'Ви виграли!') {
+                userScore++;
+            } else if (result === 'Ви програли!') {
+                computerScore++;
+            }
+
+            alert(`Ваш вибір: ${userChoice}\nВибір комп'ютера: ${computerChoice}\n${result}\nРахунок: Ви - ${userScore}, Комп'ютер - ${computerScore}`);
+        }
+    </script>
+</body>
+</html></html>

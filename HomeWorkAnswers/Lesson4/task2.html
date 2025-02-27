@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математичний квіз</title>
+</head>
+<body>
+    <script>
+        function generateExpression() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const operators = ['+', '-', '*', '/'];
+            const operator = operators[Math.floor(Math.random() * operators.length)];
+            let expression = `${num1} ${operator} ${num2}`;
+            let correctAnswer;
+
+            switch (operator) {
+                case '+':
+                    correctAnswer = num1 + num2;
+                    break;
+                case '-':
+                    correctAnswer = num1 - num2;
+                    break;
+                case '*':
+                    correctAnswer = num1 * num2;
+                    break;
+                case '/':
+                    correctAnswer = (num1 / num2).toFixed(2);
+                    break;
+            }
+
+            return { expression, correctAnswer };
+        }
+
+        function startQuiz() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            const attempts = 5;
+
+            for (let i = 0; i < attempts; i++) {
+                const { expression, correctAnswer } = generateExpression();
+                const userAnswer = prompt(`Вирішіть: ${expression}`);
+
+                if (parseFloat(userAnswer) === parseFloat(correctAnswer)) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            }
+
+            alert(`Гра завершена! Правильних відповідей: ${correctCount}, Неправильних відповідей: ${incorrectCount}`);
+        }
+
+        startQuiz();
+    </script>
+</body>
+</html>
